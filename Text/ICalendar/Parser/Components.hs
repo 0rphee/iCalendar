@@ -5,7 +5,7 @@ module Text.ICalendar.Parser.Components where
 
 import           Control.Applicative
 import           Control.Arrow        ((&&&))
-import           Control.Monad.Error  hiding (mapM)
+import           Control.Monad.Except
 import           Control.Monad.RWS    (MonadState (get), tell)
 import qualified Data.CaseInsensitive as CI
 import qualified Data.Foldable        as F
@@ -18,6 +18,7 @@ import qualified Data.Set             as S
 import Text.ICalendar.Parser.Common
 import Text.ICalendar.Parser.Properties
 import Text.ICalendar.Types
+import Control.Monad
 
 -- | Parse a VCALENDAR component. 3.4
 parseVCalendar :: Content -> ContentParser VCalendar

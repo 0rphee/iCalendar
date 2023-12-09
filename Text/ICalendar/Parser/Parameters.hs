@@ -2,7 +2,7 @@
 module Text.ICalendar.Parser.Parameters where
 
 import           Control.Applicative
-import           Control.Monad.Error
+import           Control.Monad.Except
 import           Control.Monad.RWS          (MonadWriter (tell))
 import           Data.ByteString.Lazy.Char8 (ByteString)
 import qualified Data.ByteString.Lazy.Char8 as B
@@ -22,6 +22,7 @@ import           Text.Parsec.Prim       hiding ((<|>))
 
 import Text.ICalendar.Parser.Common
 import Text.ICalendar.Types
+import Control.Monad
 
 parseAlarmTriggerRelationship :: CI Text
                               -> ContentParser AlarmTriggerRelationship

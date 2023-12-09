@@ -5,7 +5,7 @@
 module Text.ICalendar.Parser.Properties where
 
 import           Control.Applicative
-import           Control.Monad.Error          hiding (mapM)
+import           Control.Monad.Except
 import           Control.Monad.RWS            (asks)
 import qualified Data.ByteString.Base64.Lazy  as B64
 import qualified Data.ByteString.Lazy.Char8   as B
@@ -27,6 +27,7 @@ import Text.Parsec.Prim hiding ((<|>))
 import Text.ICalendar.Parser.Common
 import Text.ICalendar.Parser.Parameters
 import Text.ICalendar.Types
+import Control.Monad
 
 parseFreeBusy :: Content -> ContentParser FreeBusy
 parseFreeBusy (ContentLine _ "FREEBUSY" o bs) = do
